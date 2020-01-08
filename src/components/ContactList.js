@@ -4,13 +4,27 @@ import '../styles/listItem.css'
 
 class ContactList extends Component {
     render() {
-        const {contactList, onItemClick, isFavourite, onFav} = this.props;
+        const {contactList, onItemClick} = this.props;
         return (
             <div className='list-container'>
 
                 <ul>
                     {
                         contactList.map(contact => {
+                            if(contact.length == 1) {
+                                return (
+                                    <div className = "card">
+
+                                        <div className = 'title-detail'>
+                                            <p>{contact}</p>
+
+                                        </div>
+
+
+                                    </div>
+
+                                );
+                            }
                             return (
                                 <ListItem key = {contact.contactId} contact={contact} onclick={() => onItemClick(contact.contactId)} />
                             );
